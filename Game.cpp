@@ -1,5 +1,8 @@
 #include "Game.hpp"
 
+SDL_Texture* playerTexture;
+SDL_Rect srcRect, destRect;
+
 Game::Game()
 {}
 Game::~Game()
@@ -35,6 +38,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
+
+	SDL_Surface* tempSurface = IMG_Load("assets/player/idle-1.png");
+	playerTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
+	SDL_FreeSurface(tempSurface);
 }
 
 void Game::handleEvents()
@@ -54,12 +61,17 @@ void Game::handleEvents()
 void Game::update()
 {
 	cnt++;
+	destRect.h = 64;
+	destRect.w = 64;
+	destRect.x = cnt;
+
 	std::cout << cnt << std::endl;
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, playerTexture, NULL, &destRect);
 	SDL_RenderPresent(renderer);
 }
 
