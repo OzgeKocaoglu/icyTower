@@ -1,2 +1,6 @@
 ﻿  Game.cpp
+  GameObject.cpp
+  main.cpp
+  TextureManager.cpp
+  Generating Code...
   icyTower.vcxproj -> C:\GameDev\Projects\icyTower\Debug\icyTower.exe
